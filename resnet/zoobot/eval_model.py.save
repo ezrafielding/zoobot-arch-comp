@@ -1,0 +1,46 @@
+import os
+import logging
+import glob
+import pandas as pd
+
+import tensorflow as tf
+
+from zoobot import label_metadata, schemas
+from zoobot.data_utils import image_datasets
+from zoobot.estimators import define_model, preprocess
+from zoobot.predictions import predict_on_tfrecords, predict_on_images
+
+logging.basicConfig(level=logging.INFO)
+
+decals_test = pd.read_csv('/mnt/lustre3p/groups/ASTR1169/GalaxyZoo/GZD5/decals_lengau_test.csv')
+test_paths = decals_test['file_loc'].to_numpy()
+
+file_format = 'png'
+initial_size = 300
+batch_size = 128
+raw_image_ds = image_datasets.get_image_dataset([str(x) for x in test_paths], file_format, initial_size, batch_size)
+
+preprocessing_config = preprocess.PreprocessingConfig(
+    label_cols=[],
+    input_size=initial_size,
+    make_greyscale=True,
+    normalise_from_uint8=True
+)
+
+image_ds = preprocess.preprocess_dataset(raw_image_ds, preprocessing_config)
+
+model = define_model.load_model(
+    checkpoint_loc="/mnt/lustre3p/groups/ASTR1169/GalaxyZoo/results/checkpoint",
+    include_top=True,
+    input_size=300,
+    crop_size=224,
+    resize_size=224,
+    expect_partial=True  # optimiser state will not load as we're not using it for predictions
+)
+
+print(model.summary())
+label_cols = label_metadata.decals_label_cols
+
+save_loc = '/mnt/lustre3p/groups/ASTR1169/GalaxyZoo/results/make_predictions_example.csv'
+n_samples = 5
+predict_on_images.predict(image_ds, model, n_samples, label_cols, save_loc)
