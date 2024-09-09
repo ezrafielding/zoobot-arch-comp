@@ -1,0 +1,83 @@
+# This CITATION.cff file was generated with cffinit.
+# Visit https://bit.ly/cffinit to generate yours today!
+
+cff-version: 1.2.0
+title: >-
+  A Comparison of Deep Learning Architectures for Optical
+  Galaxy Morphology Classification
+message: >-
+  If you use this software, please cite it using the
+  metadata from this file.
+type: software
+authors:
+  - given-names: Ezra
+    family-names: Fielding
+    email: 3869003@myuwc.ac.za
+    affiliation: University of the Western Cape
+    orcid: 'https://orcid.org/0000-0002-7936-0222'
+  - given-names: Clement N.
+    family-names: Nyirenda
+    email: cnyirenda@uwc.ac.za
+    affiliation: University of the Western Cape
+    orcid: 'https://orcid.org/0000-0002-4181-0478'
+  - given-names: Mattia
+    family-names: Vaccari
+    email: mvaccari@uwc.ac.za
+    affiliation: University of the Western Cape
+    orcid: 'https://orcid.org/0000-0002-6748-0577'
+identifiers:
+  - type: doi
+    value: 10.1109/ICECET52533.2021.9698414
+    description: The DOI of the work.
+  - type: doi
+    value: 10.48550/arXiv.2111.04353
+    description: The ArXiv deposit of the encompassing paper.
+repository-code: 'https://github.com/ezrafielding/zoobot-arch-comp'
+url: 'https://sites.google.com/myuwc.ac.za/galaxy-classification'
+abstract: >-
+  The classification of galaxy morphology plays a crucial
+  role in understanding galaxy formation and evolution.
+  Traditionally, this process is done manually. The
+  emergence of deep learning techniques has given room for
+  the automation of this process. As such, this paper offers
+  a comparison of deep learning architectures to determine
+  which is best suited for optical galaxy morphology
+  classification. Adapting the model training method
+  proposed by Walmsley et al in 2021, the Zoobot Python
+  library is used to train models to predict Galaxy Zoo
+  DECaLS decision tree responses, made by volunteers, using
+  EfficientNet B0, DenseNet121 and ResNet50 as core model
+  architectures. The predicted results are then used to
+  generate accuracy metrics per decision tree question to
+  determine architecture performance. DenseNet121 was found
+  to produce the best results, in terms of accuracy, with a
+  reasonable training time. In future, further testing with
+  more deep learning architectures could prove beneficial.
+license: MIT
+date-released: '2021-12-09'
+preferred-citation:
+  type: conference-paper
+  authors:
+    - given-names: Ezra
+      family-names: Fielding
+      email: 3869003@myuwc.ac.za
+      affiliation: University of the Western Cape
+      orcid: 'https://orcid.org/0000-0002-7936-0222'
+    - given-names: Clement N.
+      family-names: Nyirenda
+      email: cnyirenda@uwc.ac.za
+      affiliation: University of the Western Cape
+      orcid: 'https://orcid.org/0000-0002-4181-0478'
+    - given-names: Mattia
+      family-names: Vaccari
+      email: mvaccari@uwc.ac.za
+      affiliation: University of the Western Cape
+      orcid: 'https://orcid.org/0000-0002-6748-0577'
+  title: A Comparison of Deep Learning Architectures for Optical Galaxy Morphology Classification
+  doi: 10.1109/ICECET52533.2021.9698414
+  pages: 1-5
+  year: '2021'
+  conference:
+    name: 2021 International Conference on Electrical, Computer and Energy Technologies (ICECET)
+    date-start: "2022-12-09"
+    date-end: "2022-12-10"
